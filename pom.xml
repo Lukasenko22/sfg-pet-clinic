@@ -14,7 +14,7 @@
 	</parent>
 	<groupId>lm.springframework</groupId>
 	<artifactId>sfg-pet-clinic</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>sfg-pet-clinic</name>
 	<description>SFG Pet Clinic Project</description>
 
@@ -43,6 +43,6 @@
 
 
   <scm>
-    <tag>sfg-pet-clinic-0.0.1</tag>
+    <developerConnection>scm:git:https://github.com/Lukasenko22/sfg-pet-clinic.git</developerConnection>
   </scm>
 </project>
