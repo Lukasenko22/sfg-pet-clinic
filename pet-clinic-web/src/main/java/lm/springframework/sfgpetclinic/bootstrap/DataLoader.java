@@ -1,10 +1,7 @@
 package lm.springframework.sfgpetclinic.bootstrap;
 
 import lm.springframework.sfgpetclinic.model.*;
-import lm.springframework.sfgpetclinic.services.OwnerService;
-import lm.springframework.sfgpetclinic.services.PetTypeService;
-import lm.springframework.sfgpetclinic.services.SpecialityService;
-import lm.springframework.sfgpetclinic.services.VetService;
+import lm.springframework.sfgpetclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,13 +15,16 @@ public class DataLoader implements CommandLineRunner{
     private VetService vetService;
     private PetTypeService petTypeService;
     private SpecialityService specialityService;
+    private VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -76,6 +76,13 @@ public class DataLoader implements CommandLineRunner{
 
         ownerService.save(owner2);
 
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionaCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Very beautiful kitty!");
+
+        visitService.save(catVisit);
+
         System.out.println("Loaded owners...");
 
         Speciality radiologySpec = new Speciality();
@@ -105,5 +112,11 @@ public class DataLoader implements CommandLineRunner{
         vetService.save(vet2);
 
         System.out.println("Loaded vets...");
+
+        System.out.println("Owners: "+ownerService.findAll().size());
+        System.out.println("Vets: "+vetService.findAll().size());
+        System.out.println("Pet types: "+petTypeService.findAll().size());
+        System.out.println("Specialities: "+specialityService.findAll().size());
+        System.out.println("Visits: "+visitService.findAll().size());
     }
 }
