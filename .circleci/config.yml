@@ -3,6 +3,10 @@ version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
 
+jobs:
+  build:
+    - run: mvn install
+
 workflows:
   maven_test:
     jobs:
