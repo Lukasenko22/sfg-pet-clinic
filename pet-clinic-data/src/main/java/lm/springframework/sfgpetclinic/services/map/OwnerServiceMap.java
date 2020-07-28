@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -73,5 +74,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                 .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
                 .collect(Collectors.toSet());
         return owners.isEmpty() ? null : owners;
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastname) {
+        // todo - not implemented
+        return null;
     }
 }
