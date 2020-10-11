@@ -30,7 +30,7 @@ public class OwnerController {
     }
 
     @RequestMapping("/find")
-    public String showfindOwnersPage(Model model){
+    public String showFindOwnersPage(Model model){
         model.addAttribute("owner", Owner.builder().build());
         return "owners/findOwners";
     }
