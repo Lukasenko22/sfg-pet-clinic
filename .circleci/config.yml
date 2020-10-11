@@ -2,8 +2,11 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:11-browsers-legacy
 
+    steps:
+      - run: mvn instsall -DskipTests
+      - run: mvn integration-test
 orbs:
   maven: circleci/maven@0.0.12
 
