@@ -8,8 +8,6 @@ jobs:
       - checkout
       - run: mvn instsall -DskipTests
       - run: mvn integration-test
-orbs:
-  maven: circleci/maven@0.0.12
 
 workflows:
   maven_test:
