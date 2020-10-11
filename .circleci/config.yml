@@ -2,7 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:11-browsers-legacy
+      - image: circleci/openjdk:11-jdk
+
+    enviroment:
+      MAVEN_OPTS: -Xmx3200m
 
     steps:
       - run: mvn instsall -DskipTests
