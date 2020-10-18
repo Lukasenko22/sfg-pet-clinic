@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,9 @@ class VisitControllerTest {
         visit.setId(1L);
         visit.setPet(pets.get(0));
         visit.setDescription("Add Test Visit");
+        visit.setDate(LocalDate.parse("2020-10-18"));
         pets.get(0).getVisits().add(visit);
+
 
         //when
         when(petService.findById(anyLong())).thenReturn(pets.get(0));
